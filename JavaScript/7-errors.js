@@ -13,11 +13,11 @@ const { readFile } = fs.promises;
         console.error(err);
         return readFile('2-sync.js');
       });
-    const file3 = await readFile('3-async.js');
+    const file3 = await readFile('3-async');
     console.dir([file1.length, file2.length, file3.length]);
   } catch (err) {
     console.log('try...catch');
-    console.error(err)
+    console.error(err);
   }
 
 })();
