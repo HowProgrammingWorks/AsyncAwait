@@ -26,9 +26,11 @@ class Person {
   constructor(name) {
     this.name = name;
   }
+
   static of(name) {
     return new Person(name);
   }
+
   split(sep = ' ') {
     return this.name.split(sep);
   }

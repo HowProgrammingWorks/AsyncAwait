@@ -26,9 +26,11 @@ class Person {
   constructor(name) {
     this.name = name;
   }
+
   static async of(name) {
     return await new Person(name);
   }
+
   async split(sep = ' ') {
     return this.name.split(sep);
   }
