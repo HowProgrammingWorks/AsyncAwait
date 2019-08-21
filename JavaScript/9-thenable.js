@@ -19,10 +19,8 @@ class Thenable {
     const fn = this.fn;
     if (fn) {
       const next = fn(value);
-      if (next) {
-        next.then(value => {
-          this.next.resolve(value);
-        });
+      if (this.next) {
+        this.next.resolve(next);
       }
     }
   }
@@ -41,7 +39,8 @@ const readFile = filename => {
 
 (async () => {
 
-  const file1 = await readFile('9-thenable.js');
+  const file1 = await readFile('9-thenable.js').then(() => 5).then(() => 25); // Doesn`t work in old example
+  console.log(file1);
   console.dir({ length: file1.length });
 
 })();
