@@ -15,10 +15,10 @@ class Thenable {
     return next;
   }
 
-  resolve(value) {
+  async resolve(value) {
     const fn = this.fn;
     if (fn) {
-      const next = fn(value);
+      const next = await fn(value);
       if (this.next) {
         this.next.resolve(next);
       }
@@ -37,10 +37,26 @@ const readFile = filename => {
   return thenable;
 };
 
+const delay = fn => (...args) => {
+  const thenable = new Thenable();
+  setTimeout(thenable.resolve.bind(thenable), 1000, fn(...args));
+  return thenable;
+};
+
+const fn = val => val;
+const mul = val => val * 5;
+const add = val => val + 2;
+
+const fnDel = delay(fn);
+const mulDel = delay(mul);
+const addDel = delay(add);
+
 (async () => {
 
-  const file1 = await readFile('9-thenable.js').then(() => 5).then(() => 25); // Doesn`t work in old example
-  console.log(file1);
+  const file1 = await readFile('9-thenable.js');
   console.dir({ length: file1.length });
+
+  const res = await fnDel(7).then(mulDel).then(add).then(addDel);
+  console.log(res);
 
 })();
