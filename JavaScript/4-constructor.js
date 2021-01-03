@@ -4,7 +4,7 @@ const DAY_OF_JUDGMENT = Date.now() + Math.floor(Math.random() * 5000);
 
 class Coming {
   constructor() {
-    return new Promise(resolve => setTimeout(() => {
+    return new Promise((resolve) => setTimeout(() => {
       resolve(this);
     }, DAY_OF_JUDGMENT - Date.now()));
   }

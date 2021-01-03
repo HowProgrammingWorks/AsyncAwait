@@ -20,7 +20,7 @@ class Thenable {
     if (fn) {
       const next = fn(value);
       if (next) {
-        next.then(value => {
+        next.then((value) => {
           this.next.resolve(value);
         });
       }
@@ -30,7 +30,7 @@ class Thenable {
 
 // Usage
 
-const readFile = filename => {
+const readFile = (filename) => {
   const thenable = new Thenable();
   fs.readFile(filename, 'utf8', (err, data) => {
     if (err) throw err;

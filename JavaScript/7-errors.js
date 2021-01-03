@@ -8,7 +8,7 @@ const { readFile } = fs.promises;
   try {
     const file1 = await readFile('1-prototype.js');
     const file2 = await readFile('2-sync')
-      .catch(err => {
+      .catch((err) => {
         console.log('Promise...catch');
         console.error(err);
         return readFile('2-sync.js');
