@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+const fs = require('node:fs');
 
 (async () => {
   const stream = fs.createReadStream('./8-for-await.js', 'utf8');
