@@ -4,7 +4,6 @@ const fs = require('node:fs');
 
 class Thenable {
   constructor() {
-    this.thenHandler = null;
     this.next = null;
   }
 
