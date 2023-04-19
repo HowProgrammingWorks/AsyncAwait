@@ -5,6 +5,7 @@ const fs = require('node:fs');
 class Thenable {
   constructor() {
     this.next = null;
+    this.fn = null;
   }
 
   then(fn) {
