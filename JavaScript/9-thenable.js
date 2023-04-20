@@ -20,9 +20,7 @@ class Thenable {
     if (fn) {
       const next = fn(value);
       if (next) {
-        next.then((value) => {
-          this.next.resolve(value);
-        });
+        this.next.resolve(next);
       }
     }
   }
