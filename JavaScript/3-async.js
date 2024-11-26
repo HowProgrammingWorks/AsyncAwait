@@ -4,7 +4,7 @@ async function inc(a) {
   return a + 1;
 }
 
-const sum = async function(a, b) {
+const sum = async function (a, b) {
   return a + b;
 };
 
@@ -19,7 +19,7 @@ const obj = {
   name: 'Marcus Aurelius',
   async split(sep = ' ') {
     return this.name.split(sep);
-  }
+  },
 };
 
 class Person {
@@ -38,13 +38,13 @@ class Person {
 
 const person = new Person('Marcus Aurelius');
 
-(async () => {
-
+const main = async () => {
   console.log('await inc(5) =', await inc(5));
   console.log('await sum(1, 3) =', await sum(1, 3));
   console.log('await max(8, 6) =', await max(8, 6));
   console.log('await avg(8, 6) =', await avg(8, 6));
   console.log('await obj.split() =', await obj.split());
   console.log('await person.split() =', await person.split());
+};
 
-})();
+main();

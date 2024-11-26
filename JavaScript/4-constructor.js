@@ -4,15 +4,17 @@ const DAY_OF_JUDGMENT = Date.now() + Math.floor(Math.random() * 5000);
 
 class Coming {
   constructor() {
-    return new Promise((resolve) => setTimeout(() => {
-      resolve(this);
-    }, DAY_OF_JUDGMENT - Date.now()));
+    return new Promise((resolve) =>
+      setTimeout(() => {
+        resolve(this);
+      }, DAY_OF_JUDGMENT - Date.now()),
+    );
   }
 }
 
-(async () => {
-
+const main = async () => {
   const secondComing = await new Coming();
   console.dir(secondComing);
+};
 
-})();
+main();

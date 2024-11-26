@@ -25,11 +25,14 @@ const electronics = [
 
 // Usage block: change just following code
 
-(async () => {
+const main = async () => {
   let money = 0;
   try {
     money = await total(electronics);
   } catch {
+    console.log('catched');
   }
   console.log({ money });
-})();
+};
+
+main();

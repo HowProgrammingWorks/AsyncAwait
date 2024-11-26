@@ -39,9 +39,9 @@ const readFile = (filename) => {
   return thenable;
 };
 
-(async () => {
-
+const main = async () => {
   const file1 = await readFile('9-thenable.js');
   console.dir({ length: file1.length });
+};
 
-})();
+main();

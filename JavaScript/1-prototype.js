@@ -25,10 +25,8 @@ console.log(afn.__proto__.__proto__.__proto__.constructor);
 console.log();
 
 console.log(Object.getPrototypeOf(afn).constructor);
+console.log(Object.getPrototypeOf(Object.getPrototypeOf(afn)).constructor);
 console.log(
-  Object.getPrototypeOf(
-    Object.getPrototypeOf(afn)).constructor);
-console.log(
-  Object.getPrototypeOf(
-    Object.getPrototypeOf(
-      Object.getPrototypeOf(afn))).constructor);
+  Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(afn)))
+    .constructor,
+);

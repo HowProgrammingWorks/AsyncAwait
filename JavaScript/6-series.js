@@ -2,9 +2,10 @@
 
 // Emulate Asynchronous calls
 
-const pause = () => new Promise((resolve) =>
-  setTimeout(resolve, Math.floor(Math.random() * 1000))
-);
+const pause = () =>
+  new Promise((resolve) =>
+    setTimeout(resolve, Math.floor(Math.random() * 1000)),
+  );
 
 // Asynchronous functions
 
@@ -34,13 +35,13 @@ const readFile = async (path) => {
 
 // Usage
 
-(async () => {
-
+const main = async () => {
   const config = await readConfig('myConfig');
   const res = await doQuery('select * from cities');
   const json = await httpGet('http://kpi.ua');
   const file = await readFile('README.md');
   console.log('Done');
   console.dir({ config, res, json, file });
+};
 
-})();
+main();
