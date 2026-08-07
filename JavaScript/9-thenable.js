@@ -18,11 +18,10 @@ class Thenable {
   resolve(value) {
     const fn = this.fn;
     if (fn) {
-      const next = fn(value);
-      if (next) {
-        next.then((value) => {
-          this.next.resolve(value);
-        });
+      const result = fn(value);
+      const next = this.next;
+      if (next.fn) {
+        next.resolve(result);
       }
     }
   }
@@ -39,8 +38,11 @@ const readFile = (filename) => {
   return thenable;
 };
 
+const MINIFY_REGEX = new RegExp('\\s+', 'g');
+const minify = (content) => content.replaceAll(MINIFY_REGEX, '');
+
 const main = async () => {
-  const file1 = await readFile('9-thenable.js');
+  const file1 = await readFile('9-thenable.js').then(minify);
   console.dir({ length: file1.length });
 };
 
